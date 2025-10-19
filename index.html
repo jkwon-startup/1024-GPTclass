@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPTs를 활용한 생산성 향상 | 권정선</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="fixed-nav">
+        <div class="nav-container">
+            <div class="logo">GPT 생산성 강의</div>
+            <ul class="nav-menu">
+                <li><a href="#slide-0" data-slide="0">소개</a></li>
+                <li><a href="#slide-1" data-slide="1">강사</a></li>
+                <li><a href="#slide-2" data-slide="2">개요</a></li>
+                <li><a href="#slide-3" data-slide="3">OpenAI</a></li>
+                <li><a href="#slide-4" data-slide="4">Gemini</a></li>
+                <li><a href="#slide-5" data-slide="5">Comet</a></li>
+            </ul>
+            <div class="slide-counter">
+                <span class="current-slide">1</span> / <span class="total-slides">7</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- P5.js Background Canvas -->
+    <div id="p5-background"></div>
+
+    <!-- Slide Container -->
+    <div class="slide-container">
+
+        <!-- Slide 0: Title -->
+        <section class="slide active" data-slide="0">
+            <div class="slide-content center">
+                <h1 class="main-title">GPTs를 활용한<br>업무 생산성 향상</h1>
+                <p class="subtitle">AI 시대, 스마트하게 일하는 방법</p>
+                <div class="instructor">
+                    <p class="instructor-name">강사: 권정선 (여행가J)</p>
+                </div>
+                <div class="scroll-indicator">
+                    <span>스크롤하거나 화살표 키를 사용하세요</span>
+                    <div class="arrow-down"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 1: Instructor -->
+        <section class="slide" data-slide="1">
+            <div class="slide-content">
+                <h2 class="slide-title">강사 소개</h2>
+                <div class="instructor-info">
+                    <div class="info-card">
+                        <h3>권정선 (여행가J)</h3>
+                        <ul class="info-list">
+                            <li>AI 활용 생산성 전문가</li>
+                            <li>ChatGPT & Custom GPTs 개발자</li>
+                            <li>업무 자동화 컨설턴트</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4>강의 대상</h4>
+                        <p>다양한 연령대의 AI 초보자</p>
+                        <h4>강의 방식</h4>
+                        <p>이론 강의 후 실시간 시연</p>
+                        <h4>사용 환경</h4>
+                        <p>GPT 웹 버전, 구글 크롬 브라우저</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Overview -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2 class="slide-title">강의 개요</h2>
+                <div class="overview-grid">
+                    <div class="overview-card blue">
+                        <div class="card-number">01</div>
+                        <h3>OpenAI ChatGPT</h3>
+                        <ul>
+                            <li>ChatGPT 기본 원리</li>
+                            <li>Creative Contents GPTs</li>
+                            <li>업무 자동화 GPTs</li>
+                        </ul>
+                    </div>
+                    <div class="overview-card green">
+                        <div class="card-number">02</div>
+                        <h3>Google Gemini</h3>
+                        <ul>
+                            <li>워크스페이스 & 앱스크립트</li>
+                            <li>이메일 자동화</li>
+                            <li>해외 시장 조사</li>
+                        </ul>
+                    </div>
+                    <div class="overview-card blue">
+                        <div class="card-number">03</div>
+                        <h3>Comet Browser</h3>
+                        <ul>
+                            <li>Perplexity.ai의 혁신</li>
+                            <li>실시간 AI 검색</li>
+                            <li>생산성 향상 기능</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: OpenAI -->
+        <section class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2 class="slide-title">OpenAI ChatGPT</h2>
+                <div class="content-grid">
+                    <div class="content-section">
+                        <h3>1. ChatGPT 기본 원리</h3>
+                        <ul class="detail-list">
+                            <li>프롬프트 작성법과 응용 사례</li>
+                            <li>ChatGPT 다양한 모델 이해하기</li>
+                            <li>커스텀 GPTs 구성 이해하기</li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h3>2. Creative Contents GPTs</h3>
+                        <ul class="detail-list">
+                            <li>이미지 생성 GPTs</li>
+                            <li>보고서, 보도자료 자동 작성 GPTs</li>
+                            <li>네이버 뉴스 서칭 GPTs</li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h3>3. 업무 자동화 GPTs</h3>
+                        <ul class="detail-list">
+                            <li>엑셀 시트 분석 GPTs</li>
+                            <li>이메일 자동화 GPTs</li>
+                            <li>네이버 뉴스레터 GPTs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <a href="lectures/openai.html" class="btn-primary">상세 강의 보기</a>
+                    <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">ChatGPT 시작하기</a>
+                    <a href="https://github.com/jkwon-startup/GPTmake" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub 자료</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Gemini -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-title">Google Gemini</h2>
+                <div class="content-grid">
+                    <div class="content-section">
+                        <h3>1. 구글 워크스페이스 & 앱스크립트</h3>
+                        <ul class="detail-list">
+                            <li>Gemini와 Google Workspace 통합</li>
+                            <li>Apps Script를 활용한 자동화</li>
+                            <li>실무 적용 사례</li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h3>2. 이메일 분석 및 답장 자동화</h3>
+                        <ul class="detail-list">
+                            <li>Gmail 자동 분류 및 분석</li>
+                            <li>AI 기반 답장 생성</li>
+                            <li>업무 효율 극대화</li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h3>3. 해외 시장 조사</h3>
+                        <ul class="detail-list">
+                            <li>Gemini Deep Research 활용</li>
+                            <li>NotebookLM으로 정보 정리</li>
+                            <li>시장 분석 보고서 생성</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <a href="lectures/gemini.html" class="btn-primary">상세 강의 보기</a>
+                    <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">Gemini 시작하기</a>
+                    <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">NotebookLM</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Comet -->
+        <section class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2 class="slide-title">Comet Browser</h2>
+                <div class="content-grid">
+                    <div class="content-section">
+                        <h3>1. Perplexity.ai의 새로운 브라우저</h3>
+                        <ul class="detail-list">
+                            <li>AI 기반 검색의 혁신</li>
+                            <li>실시간 정보 통합</li>
+                            <li>기존 브라우저와의 차별점</li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h3>2. 친구 초대 프로그램</h3>
+                        <ul class="detail-list">
+                            <li>초대 링크를 통한 가입</li>
+                            <li>프리미엄 기능 체험</li>
+                            <li>커뮤니티 혜택</li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h3>3. 사용 가능한 기능들</h3>
+                        <ul class="detail-list">
+                            <li>AI 어시스턴트 통합</li>
+                            <li>자동 요약 및 번역</li>
+                            <li>생산성 도구 모음</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <a href="lectures/comet.html" class="btn-primary">상세 강의 보기</a>
+                    <a href="https://pplx.ai/gloriosa0444527" target="_blank" rel="noopener noreferrer" class="btn-secondary">Comet 가입하기</a>
+                    <a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer" class="btn-secondary">Perplexity.ai</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Closing -->
+        <section class="slide" data-slide="6">
+            <div class="slide-content center">
+                <h2 class="slide-title">함께 시작하는 AI 여정</h2>
+                <div class="closing-content">
+                    <p class="closing-text">
+                        AI는 더 이상 선택이 아닌 필수입니다.<br>
+                        오늘 배운 도구들로 여러분의 업무 생산성을<br>
+                        획기적으로 향상시켜보세요.
+                    </p>
+                    <div class="resources">
+                        <h3>학습 자료</h3>
+                        <div class="resource-links">
+                            <a href="https://github.com/jkwon-startup/GPTmake" target="_blank" rel="noopener noreferrer" class="resource-btn">
+                                GitHub 저장소
+                            </a>
+                            <a href="https://chatgpt.com/share/68f45d08-cc44-8007-9011-36d7527076c4" target="_blank" rel="noopener noreferrer" class="resource-btn">
+                                ChatGPT 예제
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact">
+                        <p>강사: 권정선 (여행가J)</p>
+                        <p>감사합니다!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="slide-controls">
+        <button class="control-btn prev" aria-label="이전 슬라이드">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <button class="control-btn next" aria-label="다음 슬라이드">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <script src="js/p5-background.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

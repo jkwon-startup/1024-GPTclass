@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet Browser 상세 강의 | GPT 생산성 강의</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Detail page specific styles */
+        body {
+            overflow-y: auto;
+        }
+
+        .detail-page {
+            padding-top: var(--nav-height);
+        }
+
+        .hero-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.08), rgba(52, 199, 89, 0.08));
+            padding: 80px 40px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--blue-primary), var(--green-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-size: 28px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .topic-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--blue-primary), var(--green-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .topic-card h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .topic-card p, .topic-card li {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .topic-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .topic-card li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+        }
+
+        .topic-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--blue-primary);
+            font-weight: 700;
+        }
+
+        .features-showcase {
+            background: var(--bg-gray);
+            padding: 80px 0;
+        }
+
+        .feature-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 24px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            transition: all 0.3s var(--transition-smooth);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-btn:hover {
+            border-color: var(--blue-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .feature-btn h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .feature-btn p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--blue-primary), var(--green-primary));
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s var(--transition-smooth);
+            margin-bottom: 40px;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
+        }
+
+        .invite-section {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.05), rgba(52, 199, 89, 0.05));
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .invite-card {
+            background: white;
+            border-radius: 24px;
+            padding: 60px 48px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .invite-code {
+            background: linear-gradient(135deg, var(--blue-primary), var(--green-primary));
+            color: white;
+            padding: 24px 40px;
+            border-radius: 16px;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 32px 0;
+            display: inline-block;
+        }
+
+        .resources-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .resource-card {
+            background: var(--bg-gray);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .resource-card h4 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .resource-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .resource-card a {
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .resource-card a:hover {
+            color: var(--blue-dark);
+            text-decoration: underline;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 40px 0;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--blue-primary), var(--green-primary));
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: var(--bg-gray);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(52, 199, 89, 0.1));
+            border-left: 4px solid var(--blue-primary);
+            padding: 24px 32px;
+            border-radius: 12px;
+            margin: 32px 0;
+        }
+
+        .highlight-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="fixed-nav">
+        <div class="nav-container">
+            <div class="logo">GPT 생산성 강의</div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">메인으로</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#invite">초대</a></li>
+                <li><a href="#features">기능</a></li>
+                <li><a href="#resources">자료</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="detail-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Comet Browser</h1>
+                <p class="hero-subtitle">Perplexity.ai가 만든 차세대 AI 브라우저로 검색과 생산성의 새로운 기준을 경험하세요</p>
+                <div class="button-group">
+                    <a href="https://pplx.ai/gloriosa0444527" target="_blank" rel="noopener noreferrer" class="btn-primary">Comet 가입하기</a>
+                    <a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer" class="btn-secondary">Perplexity.ai</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: About Comet -->
+        <section id="about" class="section-content">
+            <a href="../index.html" class="back-button">
+                ← 메인으로 돌아가기
+            </a>
+
+            <h2 class="section-title">1. Perplexity.ai의 새로운 브라우저</h2>
+            <p class="section-subtitle">검색의 패러다임을 바꾸는 AI 네이티브 브라우저</p>
+
+            <div class="topic-grid">
+                <div class="topic-card">
+                    <h3>Comet이란?</h3>
+                    <h4>AI 기반 검색의 혁신</h4>
+                    <p>Perplexity.ai가 개발한 Comet은 단순한 브라우저가 아닌 AI 검색 어시스턴트입니다.</p>
+                    <ul>
+                        <li>실시간 AI 기반 검색</li>
+                        <li>자동 정보 요약</li>
+                        <li>출처 투명성 보장</li>
+                        <li>대화형 인터페이스</li>
+                        <li>멀티모달 검색</li>
+                    </ul>
+
+                    <h4>핵심 가치</h4>
+                    <ul>
+                        <li>정확성: 신뢰할 수 있는 정보</li>
+                        <li>효율성: 빠른 답변 제공</li>
+                        <li>투명성: 명확한 출처 표시</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>실시간 정보 통합</h3>
+                    <h4>항상 최신 정보</h4>
+                    <p>실시간 웹 크롤링으로 가장 최신의 정보를 제공합니다.</p>
+                    <ul>
+                        <li>실시간 뉴스 및 트렌드</li>
+                        <li>최신 학술 논문</li>
+                        <li>소셜 미디어 동향</li>
+                        <li>시장 데이터</li>
+                        <li>날씨 및 이벤트 정보</li>
+                    </ul>
+
+                    <h4>다양한 소스 통합</h4>
+                    <ul>
+                        <li>웹 페이지</li>
+                        <li>학술 데이터베이스</li>
+                        <li>뉴스 매체</li>
+                        <li>YouTube 및 비디오</li>
+                        <li>PDF 문서</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>기존 브라우저와의 차별점</h3>
+                    <h4>왜 Comet인가?</h4>
+                    <p>전통적인 검색 엔진의 한계를 뛰어넘습니다.</p>
+                    <ul>
+                        <li>광고 없는 깔끔한 결과</li>
+                        <li>직접적인 답변 제공</li>
+                        <li>맥락 이해 능력</li>
+                        <li>후속 질문 지원</li>
+                        <li>개인화된 검색 경험</li>
+                    </ul>
+
+                    <h4>생산성 향상</h4>
+                    <ul>
+                        <li>검색 시간 80% 단축</li>
+                        <li>정보 신뢰도 향상</li>
+                        <li>리서치 효율성 극대화</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4>💡 Comet vs 전통 검색엔진</h4>
+                <p>
+                    <strong>전통 검색:</strong> "파이썬 데이터 분석" 검색 → 수많은 링크 → 각 페이지 방문 → 정보 수집 및 비교<br><br>
+                    <strong>Comet:</strong> "파이썬으로 CSV 파일 분석하는 방법 알려줘" → 즉시 단계별 가이드 제공 + 코드 예제 + 관련 리소스
+                </p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>기능</th>
+                        <th>Comet Browser</th>
+                        <th>일반 브라우저</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>검색 방식</strong></td>
+                        <td>AI 대화형, 맥락 이해</td>
+                        <td>키워드 기반</td>
+                    </tr>
+                    <tr>
+                        <td><strong>결과 제공</strong></td>
+                        <td>직접적인 답변 + 출처</td>
+                        <td>링크 목록</td>
+                    </tr>
+                    <tr>
+                        <td><strong>정보 통합</strong></td>
+                        <td>자동 요약 및 종합</td>
+                        <td>사용자가 직접 비교</td>
+                    </tr>
+                    <tr>
+                        <td><strong>후속 질문</strong></td>
+                        <td>맥락 유지 대화</td>
+                        <td>새로운 검색 필요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>광고</strong></td>
+                        <td>없음</td>
+                        <td>광고 포함</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 2: Invite Program -->
+        <section id="invite" class="invite-section">
+            <div class="section-content">
+                <h2 class="section-title">2. 친구 초대 프로그램</h2>
+                <p class="section-subtitle">초대 링크를 통해 Comet의 프리미엄 기능을 경험하세요</p>
+
+                <div class="invite-card">
+                    <div class="feature-icon" style="font-size: 64px; margin-bottom: 24px;">🎁</div>
+                    <h3 style="font-size: 32px; margin-bottom: 16px;">특별 초대 링크</h3>
+                    <p style="font-size: 18px; color: var(--text-secondary); margin-bottom: 32px;">
+                        아래 링크를 통해 가입하시면 프리미엄 기능을 무료로 체험할 수 있습니다
+                    </p>
+
+                    <div class="invite-code">
+                        gloriosa0444527
+                    </div>
+
+                    <a href="https://pplx.ai/gloriosa0444527" target="_blank" rel="noopener noreferrer"
+                       class="btn-primary"
+                       style="font-size: 20px; padding: 20px 48px; margin: 24px 0; display: inline-block;">
+                        지금 바로 가입하기 →
+                    </a>
+
+                    <h4 style="font-size: 24px; margin-top: 48px; margin-bottom: 20px;">초대 혜택</h4>
+                    <div class="topic-grid" style="text-align: left;">
+                        <div>
+                            <h4 style="color: var(--blue-primary);">🚀 프리미엄 기능 체험</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 8px 0;">✓ 무제한 AI 검색</li>
+                                <li style="padding: 8px 0;">✓ 고급 분석 도구</li>
+                                <li style="padding: 8px 0;">✓ 우선 고객 지원</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--green-primary);">🎯 커뮤니티 혜택</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 8px 0;">✓ 얼리 어답터 배지</li>
+                                <li style="padding: 8px 0;">✓ 신기능 우선 접근</li>
+                                <li style="padding: 8px 0;">✓ 전용 커뮤니티 가입</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Features -->
+        <section id="features" class="features-showcase">
+            <div class="section-content">
+                <h2 class="section-title">3. 사용 가능한 기능들</h2>
+                <p class="section-subtitle">Comet이 제공하는 강력한 생산성 도구들</p>
+
+                <div class="topic-grid">
+                    <div class="topic-card">
+                        <h3>AI 어시스턴트 통합</h3>
+                        <h4>브라우징 중 언제든 AI 활용</h4>
+                        <p>웹 서핑 중 실시간으로 AI의 도움을 받을 수 있습니다.</p>
+                        <ul>
+                            <li>페이지 내용 즉시 요약</li>
+                            <li>복잡한 개념 설명</li>
+                            <li>관련 정보 추천</li>
+                            <li>맞춤법 및 문법 검사</li>
+                            <li>번역 및 언어 지원</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-card">
+                        <h3>자동 요약 및 번역</h3>
+                        <h4>시간 절약의 핵심</h4>
+                        <p>긴 글도 핵심만 빠르게 파악할 수 있습니다.</p>
+                        <ul>
+                            <li>기사 및 논문 자동 요약</li>
+                            <li>핵심 포인트 추출</li>
+                            <li>다국어 실시간 번역</li>
+                            <li>PDF 문서 번역</li>
+                            <li>YouTube 자막 요약</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-card">
+                        <h3>생산성 도구 모음</h3>
+                        <h4>올인원 워크스페이스</h4>
+                        <p>다양한 생산성 도구가 하나로 통합되어 있습니다.</p>
+                        <ul>
+                            <li>북마크 스마트 관리</li>
+                            <li>노트 및 하이라이트</li>
+                            <li>태스크 관리</li>
+                            <li>스크린샷 및 주석</li>
+                            <li>컬렉션 정리</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 32px; margin-top: 60px; margin-bottom: 32px; text-align: center;">
+                    주요 기능 한눈에 보기
+                </h3>
+
+                <div class="feature-buttons">
+                    <div class="feature-btn">
+                        <div class="feature-icon">🔍</div>
+                        <h4>AI 검색</h4>
+                        <p>대화형 AI 기반 실시간 검색</p>
+                    </div>
+
+                    <div class="feature-btn">
+                        <div class="feature-icon">📝</div>
+                        <h4>자동 요약</h4>
+                        <p>긴 글을 핵심만 빠르게 정리</p>
+                    </div>
+
+                    <div class="feature-btn">
+                        <div class="feature-icon">🌐</div>
+                        <h4>실시간 번역</h4>
+                        <p>100개 이상 언어 즉시 번역</p>
+                    </div>
+
+                    <div class="feature-btn">
+                        <div class="feature-icon">📚</div>
+                        <h4>리서치 도구</h4>
+                        <p>학술 논문 및 자료 검색</p>
+                    </div>
+
+                    <div class="feature-btn">
+                        <div class="feature-icon">🎯</div>
+                        <h4>맞춤형 결과</h4>
+                        <p>사용자 선호도 학습</p>
+                    </div>
+
+                    <div class="feature-btn">
+                        <div class="feature-icon">🔒</div>
+                        <h4>프라이버시</h4>
+                        <p>개인정보 보호 우선</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 60px;">
+                    <h4>🎓 실전 활용 예시</h4>
+                    <p style="margin-bottom: 16px;"><strong>시나리오:</strong> 새로운 기술 트렌드 조사</p>
+                    <ol style="margin-left: 24px; line-height: 2; color: var(--text-secondary);">
+                        <li>"2024년 AI 트렌드는?" → 즉시 요약된 최신 정보 제공</li>
+                        <li>관련 기사 및 논문 자동 추천</li>
+                        <li>핵심 인사이트를 노트에 저장</li>
+                        <li>후속 질문으로 심화 탐구</li>
+                        <li>모든 자료를 컬렉션으로 정리</li>
+                    </ol>
+                    <p style="margin-top: 16px; color: var(--blue-primary); font-weight: 600;">
+                        결과: 전통적 검색 방식 대비 5배 빠른 리서치 완료
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="resources-section">
+            <div class="section-content">
+                <h2 class="section-title">학습 자료 및 참고 링크</h2>
+                <p class="section-subtitle">Comet과 Perplexity.ai 활용을 위한 유용한 자료들</p>
+
+                <div class="resource-card">
+                    <h4>Perplexity.ai 공식 사이트</h4>
+                    <p>Perplexity AI 검색 엔진 및 Comet 브라우저 정보</p>
+                    <a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer">
+                        https://www.perplexity.ai →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Comet 브라우저 초대 링크</h4>
+                    <p>프리미엄 기능 체험을 위한 특별 초대 링크</p>
+                    <a href="https://pplx.ai/gloriosa0444527" target="_blank" rel="noopener noreferrer">
+                        https://pplx.ai/gloriosa0444527 →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Perplexity 블로그</h4>
+                    <p>최신 기능 업데이트 및 활용 팁</p>
+                    <a href="https://blog.perplexity.ai" target="_blank" rel="noopener noreferrer">
+                        https://blog.perplexity.ai →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>AI 검색 가이드</h4>
+                    <p>효과적인 AI 검색 활용법 및 프롬프트 작성 팁</p>
+                    <a href="https://www.perplexity.ai/hub" target="_blank" rel="noopener noreferrer">
+                        https://www.perplexity.ai/hub →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Perplexity API 문서</h4>
+                    <p>개발자를 위한 API 문서 및 통합 가이드</p>
+                    <a href="https://docs.perplexity.ai" target="_blank" rel="noopener noreferrer">
+                        https://docs.perplexity.ai →
+                    </a>
+                </div>
+
+                <div style="text-align: center; margin-top: 60px;">
+                    <a href="https://pplx.ai/gloriosa0444527" target="_blank" rel="noopener noreferrer"
+                       class="btn-primary"
+                       style="background: linear-gradient(135deg, var(--blue-primary), var(--green-primary)); font-size: 18px; padding: 20px 48px; margin-right: 16px;">
+                        Comet 지금 시작하기
+                    </a>
+                    <a href="../index.html" class="btn-secondary" style="font-size: 18px; padding: 20px 48px;">
+                        메인 페이지로 돌아가기
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
